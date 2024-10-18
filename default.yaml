@@ -45,9 +45,6 @@ ascii_composer:
     Control_L: noop       
     Control_R: noop       
 
-# 下面的 punctuator recognizer key_binder 写了一些所有方案通用的配置项。
-# 写在 default.yaml 里，方便多个方案引用，就是不用每个方案都写一遍了。
-
 # 标点符号
 # 设置为一个映射，就自动上屏；设置为多个映射，如 '/' : [ '/', ÷ ] 则进行复选。
 #   full_shape: 全角没改，使用预设值
@@ -130,9 +127,6 @@ recognizer:
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"                            # email @ 之后不上屏
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"  # URL
-    underscore: "^[A-Za-z]+_.*"  # 下划线不上屏
-    # url_2: "^[A-Za-z]+[.].*"   # 句号不上屏，支持 google.com abc.txt 等网址或文件名，使用句号翻页时需要注释掉
-    # colon: "^[A-Za-z]+:.*"     # 冒号不上屏
 
 # 快捷键
 key_binder:
@@ -144,12 +138,6 @@ key_binder:
     # 翻页 - =
     - { when: has_menu, accept: minus, send: Page_Up }
     - { when: has_menu, accept: equal, send: Page_Down }
-
-    # optimized_mode_switch:
-    # - { when: always, accept: Shift+space, toggle: ascii_mode }
-    - { when: always, accept: Control+comma, toggle: full_shape }
-    # - { when: always, accept: Control+period, toggle: ascii_punct }
-    - { when: always, accept: Control+slash, toggle: traditionalization }
 
 # 按键速查
 # https://github.com/LEOYoon-Tsaw/Rime_collections/blob/master/Rime_description.md

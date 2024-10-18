@@ -13,6 +13,12 @@ schema:
     # - melt_eng        # 英文输入，作为次翻译器挂载到拼音方案
     # - radical_pinyin  # 部件拆字，反查及辅码
 
+switches:
+  - name: emoji
+    states: [ 💀, 😄 ]
+    reset: 1
+    show_in_switcher: false
+
 # 输入引擎
 engine:
   processors:
@@ -79,4 +85,10 @@ punctuator:
     __include: default:/punctuator/full_shape  # 从 default.yaml 导入配置
   half_shape:
     __include: default:/punctuator/half_shape  # 从 default.yaml 导入配置
+
+key_binder:
+  import_preset: default  # 从 default.yaml 继承通用的
+  bindings:
+    - { when: always, toggle: ascii_punct, accept: Control+period }           # 切换中英标点
+    - { when: always, toggle: traditionalization, accept: Control+Shift+T }   # 切换简繁
 
